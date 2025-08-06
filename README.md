@@ -34,9 +34,8 @@ dotnet run
 ```
 Swagger UI: http://localhost:5162/swagger/index.html
 
-POST http://localhost:5162/api/products - {
-  "name": "Laptop Dell",
-  "price": 1200.00
-}
+POST http://localhost:5162/api/products 
+
+Example:{"name": "Laptop Dell","price": 1200.00}
 
 GET http://localhost:5162/api/products
