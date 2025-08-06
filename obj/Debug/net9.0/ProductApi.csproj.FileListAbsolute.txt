@@ -163,3 +163,4 @@ C:\Users\DELL\Downloads\dotnet-project\ProductApi\obj\Debug\net9.0\refint\Produc
 C:\Users\DELL\Downloads\dotnet-project\ProductApi\obj\Debug\net9.0\ProductApi.pdb
 C:\Users\DELL\Downloads\dotnet-project\ProductApi\obj\Debug\net9.0\ProductApi.genruntimeconfig.cache
 C:\Users\DELL\Downloads\dotnet-project\ProductApi\obj\Debug\net9.0\ref\ProductApi.dll
+C:\Users\DELL\Downloads\dotnet-project\ProductApi\obj\Debug\net9.0\ProductApi.sourcelink.json
