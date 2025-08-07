@@ -33,6 +33,9 @@ var app = builder.Build();
 // Enable middleware
 app.UseCors("AllowFrontend"); 
 
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
 app.UseSwagger();
 app.UseSwaggerUI();
 

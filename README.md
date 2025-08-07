@@ -40,4 +40,4 @@ Example: {"name": "Laptop Dell","price": 1200.00}
 
 GET http://localhost:5162/api/products
 
-Open index.html to show product manager frontend
+Open http://localhost:5162/ to show product manager frontend
