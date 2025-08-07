@@ -39,3 +39,5 @@ POST http://localhost:5162/api/products
 Example: {"name": "Laptop Dell","price": 1200.00}
 
 GET http://localhost:5162/api/products
+
+Open index.html to show product manager frontend

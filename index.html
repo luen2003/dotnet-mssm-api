@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Manager</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+    input[type="text"], input[type="number"] {
+      padding: 8px;
+      font-size: 16px;
+      width: 200px;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product Manager</h1>
+
+  <form id="productForm">
+    <input type="text" id="name" placeholder="Product Name" required />
+    <input type="number" id="price" placeholder="Price" required step="0.01" />
+    <button type="submit">Add Product</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody id="productTableBody">
+      <!-- Rows will be added here -->
+    </tbody>
+  </table>
+
+  <script>
+    const apiUrl = 'http://localhost:5162/api/products';
+    const tableBody = document.getElementById('productTableBody');
+    const form = document.getElementById('productForm');
+    const nameInput = document.getElementById('name');
+    const priceInput = document.getElementById('price');
+
+    // Fetch and display products
+    async function loadProducts() {
+      tableBody.innerHTML = '';
+      const res = await fetch(apiUrl);
+      const products = await res.json();
+
+      products.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${product.id}</td>
+          <td>${product.name}</td>
+          <td>${product.price.toFixed(2)}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    // Handle form submission
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const product = {
+        name: nameInput.value,
+        price: parseFloat(priceInput.value)
+      };
+
+      const res = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+      });
+
+      if (res.ok) {
+        nameInput.value = '';
+        priceInput.value = '';
+        loadProducts();
+      } else {
+        alert('Error adding product.');
+      }
+    });
+
+    // Initial load
+    loadProducts();
+  </script>
+
+</body>
+</html>
